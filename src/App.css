@@ -5,7 +5,7 @@
 /* Hero Section - Stripe-inspired gradient hero */
 .hero {
   position: relative;
-  background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-secondary) 100%);
   padding: 80px 24px 120px;
   text-align: center;
   overflow: hidden;
@@ -118,7 +118,7 @@
   display: flex;
   gap: 12px;
   margin-bottom: 32px;
-  background: white;
+  background: var(--color-card);
   padding: 8px;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
@@ -202,7 +202,7 @@
 
 /* Activity Cards - Stripe card design */
 .activity-card {
-  background: white;
+  background: var(--color-card);
   border-radius: var(--radius-lg);
   padding: 24px;
   border: 1px solid var(--color-border);
@@ -274,7 +274,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+  background: linear-gradient(135deg, var(--color-background-secondary) 0%, var(--color-background) 100%);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   transition: transform 0.3s;
