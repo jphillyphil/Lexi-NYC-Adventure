@@ -22,6 +22,47 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* View Toggle Button */
+.view-toggle {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 2000;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.view-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.view-toggle:active {
+  transform: translateY(0);
+}
+
+.view-toggle svg {
+  transition: transform 0.3s;
+}
+
+.view-toggle:hover svg {
+  transform: translateX(-2px);
+}
+
 .theme-toggle:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: var(--shadow-xl);
@@ -527,6 +568,41 @@
 
 .activity-location svg {
   color: var(--color-primary);
+}
+
+/* DUMBO History Button */
+.dumbo-history-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  margin-top: 16px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(122, 115, 255, 0.3);
+}
+
+.dumbo-history-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(122, 115, 255, 0.4);
+}
+
+.dumbo-history-button:active {
+  transform: translateY(0);
+}
+
+.dumbo-history-button svg {
+  transition: transform 0.3s;
+}
+
+.dumbo-history-button:hover svg {
+  transform: rotate(360deg);
 }
 
 /* Footer Card */
