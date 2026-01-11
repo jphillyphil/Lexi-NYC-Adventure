@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 
 const itineraryData = [
@@ -125,9 +125,46 @@ const itineraryData = [
 
 function App() {
   const [selectedDay, setSelectedDay] = useState(0)
+  const [showSplash, setShowSplash] = useState(true)
+  const [fadeOut, setFadeOut] = useState(false)
+
+  const handleEnter = () => {
+    setFadeOut(true)
+    setTimeout(() => {
+      setShowSplash(false)
+    }, 800)
+  }
+
+  useEffect(() => {
+    // Auto-hide splash after 4 seconds
+    const timer = setTimeout(() => {
+      handleEnter()
+    }, 4000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (showSplash) {
+    return (
+      <div className={`splash-screen ${fadeOut ? 'fade-out' : ''}`}>
+        <div className="splash-overlay"></div>
+        <div className="splash-content">
+          <div className="splash-badge">✨ Welcome</div>
+          <h1 className="splash-title">Lexi's NYC Adventure</h1>
+          <p className="splash-subtitle">An unforgettable journey through New York City</p>
+          <button className="splash-button" onClick={handleEnter}>
+            <span>Explore Itinerary</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <div className="app">
+    <div className="app main-content-enter">
       <div className="hero">
         <div className="hero-content">
           <div className="badge">✨ NYC Adventure</div>
