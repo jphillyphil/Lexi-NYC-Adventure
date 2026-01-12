@@ -1,6 +1,8 @@
 .dumbo-history {
   min-height: 100vh;
   background: var(--color-background);
+  position: relative;
+  overflow-x: hidden;
 }
 
 /* Hero Section */
@@ -205,14 +207,15 @@
   background: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 32px;
   margin: 0 40px;
-  max-width: 500px;
+  max-width: 550px;
   box-shadow: var(--shadow-lg);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .timeline-card::before {
@@ -235,6 +238,40 @@
 
 .timeline-card:hover::before {
   opacity: 0.05;
+}
+
+.timeline-card-image {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.timeline-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-card:hover .timeline-card-image img {
+  transform: scale(1.08);
+}
+
+.timeline-card-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.timeline-card-content {
+  padding: 32px;
+  position: relative;
+  z-index: 1;
 }
 
 .timeline-year {
@@ -344,6 +381,131 @@
 
 .timeline-item.expanded .timeline-card {
   border-color: var(--color-primary);
+}
+
+/* Map Section */
+.map-section {
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-secondary) 100%);
+  padding: 100px 24px;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.map-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.map-info {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.map-title {
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.map-subtitle {
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.map-features {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.map-feature {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-feature:hover {
+  transform: translateX(8px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px rgba(122, 115, 255, 0.3);
+}
+
+.feature-content h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.feature-content p {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.map-embed {
+  height: 500px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border);
+  animation: fadeInRight 0.8s ease-out;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-embed:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Landmarks Section */
@@ -541,12 +703,37 @@
     max-width: 100%;
   }
 
+  .timeline-card-image {
+    height: 180px;
+  }
+
+  .timeline-card-content {
+    padding: 24px;
+  }
+
   .timeline-year {
     font-size: 28px;
   }
 
   .timeline-title {
     font-size: 22px;
+  }
+
+  .map-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .map-title {
+    font-size: 36px;
+  }
+
+  .map-subtitle {
+    font-size: 16px;
+  }
+
+  .map-embed {
+    height: 400px;
   }
 
   .landmarks-title {
@@ -592,8 +779,34 @@
     padding: 60px 16px;
   }
 
-  .timeline-card {
-    padding: 24px;
+  .timeline-card-image {
+    height: 160px;
+  }
+
+  .timeline-card-content {
+    padding: 20px;
+  }
+
+  .map-section {
+    padding: 60px 16px;
+  }
+
+  .map-title {
+    font-size: 28px;
+  }
+
+  .map-embed {
+    height: 300px;
+  }
+
+  .map-feature {
+    padding: 16px;
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
   }
 
   .landmarks-section {
